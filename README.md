@@ -1,20 +1,47 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Pokecost Progressive Web App
 
-# Run and deploy your AI Studio app
+Pokecost is a progressive web application for browsing Pokémon TCG cards, tracking their prices, and managing a personal collection. The experience is optimised for mobile and desktop with offline support provided through a service worker.
 
-This contains everything you need to run your app locally.
+## Features
 
-View your app in AI Studio: https://ai.studio/apps/drive/12QM842NvYhu9V4Q8JXn0idtKY9cO7dLz
+- 🔍 **Powerful filtering** – Search by card name, set, rarity, or type with instant results.
+- 📈 **Localized pricing** – Prices are automatically converted into your preferred currency.
+- 🗂️ **Collection management** – Add cards to a personal collection stored in the browser with quantity controls.
+- 🌓 **Theme aware** – Toggle between light and dark modes, with preferences saved locally.
+- 📱 **Installable PWA** – Works offline thanks to a caching service worker and install prompts on supported devices.
 
-## Run Locally
+## Getting started
 
-**Prerequisites:**  Node.js
+### Prerequisites
 
+- Node.js 18+
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### Installation
+
+```bash
+npm install
+```
+
+### Development
+
+```bash
+npm run dev
+```
+
+### Production build
+
+```bash
+npm run build
+```
+
+The generated assets are emitted to the `dist/` directory. Deploy the contents of this folder to any static hosting provider.
+
+## Environment variables
+
+An API key for the Pokémon TCG API is bundled for convenience. If you have your own key you can update the value inside [`constants.ts`](constants.ts).
+
+## Progressive Web App behaviour
+
+- A service worker (`sw.js`) precaches the application shell and serves content using a network-first strategy with offline fallbacks.
+- The app manifest (`manifest.json`) exposes install metadata and icons so the experience can be added to home screens.
+- User preferences (theme, language, and collection) are stored locally to provide a seamless offline experience.
